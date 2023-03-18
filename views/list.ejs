@@ -1,0 +1,21 @@
+<%- include('header') -%>
+
+    <div class="box" id="heading">
+        <h1>It's <%= listTitle %> </h1>
+    </div>
+      <div class="box">
+     <%newListItems.map(item =>{ %>
+        <form action="/delete" method="post" class="item">
+            <input type="checkbox" name="checkbox" value=<%=item._id %> onChange="this.form.submit()">
+            <input type="hidden" name="list" value="<%= listTitle %>">
+            <p><%= item.name %></p>
+        </form>
+     <%        }) %>
+     <form action="/" method="post" class="item">
+        <input type="text" name="newItem" id="newItem" autocomplete="off" placeholder="New Item">
+        <button type="submit" name="list" value="<%= listTitle %>">+</button>
+      </form>
+     </div>
+
+ <%- include('footer') -%>
+
